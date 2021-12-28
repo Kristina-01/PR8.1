@@ -25,6 +25,7 @@ public class HelloApplication extends Application {
     public static  Stage _stage;
     public static Scene scene;
     public static Pet p = null;
+    public static Vaccine v = null;
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -48,7 +49,6 @@ public class HelloApplication extends Application {
                 Pet p = new Pet();
                 p.number=i+1;
                 pets.add(p);
-
             }
             flag=false;
         }
@@ -56,6 +56,8 @@ public class HelloApplication extends Application {
 
         ComboBox cb = (ComboBox) scene.lookup("#Combo_Box");
         cb.setItems(FXCollections.observableArrayList(pets));
+
+
 
         cb.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {//вывод информации о конкретном животном из списка
             p = (Pet)newValue;
@@ -68,12 +70,26 @@ public class HelloApplication extends Application {
                 tfage.setText(Integer.toString(p.age));
                 TextField tfdofb = (TextField) scene.lookup("#DateofBirth");
                 tfdofb.setText(p.DateofBirth);
-                TextField tftypev = (TextField) scene.lookup("#typevaccines");
-                tftypev.setText(p.vaccines.get(0).type);
-                TextField tfnamev = (TextField) scene.lookup("#namev");
-                tfnamev.setText(p.vaccines.get(0).drugname);
-                TextField tfdate = (TextField) scene.lookup("#datav");
-                tfdate.setText(p.vaccines.get(0).date);
+                //TextField tftypev = (TextField) scene.lookup("#typevaccines");
+               // tftypev.setText(p.vaccines.get(0).type);
+               // TextField tfnamev = (TextField) scene.lookup("#namev");
+               // tfnamev.setText(p.vaccines.get(0).drugname);
+               // TextField tfdate = (TextField) scene.lookup();
+               // tfdate.setText(p.vaccines.get(0).date);
+                ComboBox cbfv = (ComboBox) scene.lookup("#Combo_Box_For_V");
+                cbfv.setItems(FXCollections.observableList(p.vaccines));
+
+                cbfv.getSelectionModel().selectedItemProperty().addListener((options1, oldValue1, newValue1) -> {
+                    v =(Vaccine)newValue1;
+
+                    TextField fttypev = (TextField) scene.lookup("#typev");
+                    fttypev.setText(v.type);
+                    TextField ftdatev = (TextField) scene.lookup("#datev");
+                    ftdatev.setText(v.date);
+                    TextField ftnamev = (TextField) scene.lookup("#namev1");
+                    ftnamev.setText(v.drugname);
+                });
+
             }
             else
             {
@@ -85,9 +101,9 @@ public class HelloApplication extends Application {
                 tfage.setText("");
                 TextField tfdofb = (TextField) scene.lookup("#DateofBirth");
                 tfdofb.setText("");
-                TextField tftypev = (TextField) scene.lookup("#typevaccines");
+                TextField tftypev = (TextField) scene.lookup("#typev");
                 tftypev.setText("");
-                TextField tfnamev = (TextField) scene.lookup("#namev");
+                TextField tfnamev = (TextField) scene.lookup("#namev1");
                 tfnamev.setText("");
                 TextField tfdate = (TextField) scene.lookup("#datav");
                 tfdate.setText("");
@@ -114,12 +130,12 @@ public class HelloApplication extends Application {
             p.age=Integer.parseInt(tfage.getText());
             TextField tfdofb = (TextField) scene.lookup("#DateofBirth");
             p.DateofBirth=tfdofb.getText();
-            TextField tftypev = (TextField) scene.lookup("#typevaccines");
-            p.vaccines.get(0).type=tftypev.getText();
-            TextField tfnamev = (TextField) scene.lookup("#namev");
-            p.vaccines.get(0).drugname=tfnamev.getText();
-            TextField tfdate = (TextField) scene.lookup("#datav");
-            p.vaccines.get(0).date=tfdate.getText();
+            TextField tfnamev = (TextField) scene.lookup("#namev1");
+            v.drugname=tfnamev.getText();
+            TextField tftypev = (TextField) scene.lookup("#typev");
+            v.type=tftypev.getText();
+            TextField tfdate = (TextField) scene.lookup("#datev");
+            v.date=tfdate.getText();
         }
     }
 

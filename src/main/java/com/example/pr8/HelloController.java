@@ -70,6 +70,8 @@ public class HelloController {
     @FXML
     private ComboBox<Pet> ComboBox;
 
+    @FXML
+    private ComboBox<Pet> Combo_Box_For_V;
 
     @FXML
     private TextField age;
@@ -94,13 +96,13 @@ public class HelloController {
     private Button Save;
 
     @FXML
-    private TextField typevaccines;
+    private TextField typev;
 
     @FXML
-    private TextField datav;
+    private TextField datev;
 
     @FXML
-    private TextField namev;
+    private TextField namev1;
 
     @FXML
     void initialize() {

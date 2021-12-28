@@ -51,5 +51,10 @@ public class Vaccine {
         this.type=type;
         this.drugname=drugname;
     }
+    static  int number=1;
 
+
+    public String toString() {
+        return number + ". " + drugname;
+    }
 }
