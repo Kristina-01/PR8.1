@@ -30,8 +30,6 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 
         _stage = stage;
-
-
         okno(stage);
     }
     static boolean flag= true;
@@ -70,24 +68,21 @@ public class HelloApplication extends Application {
                 tfage.setText(Integer.toString(p.age));
                 TextField tfdofb = (TextField) scene.lookup("#DateofBirth");
                 tfdofb.setText(p.DateofBirth);
-                //TextField tftypev = (TextField) scene.lookup("#typevaccines");
-               // tftypev.setText(p.vaccines.get(0).type);
-               // TextField tfnamev = (TextField) scene.lookup("#namev");
-               // tfnamev.setText(p.vaccines.get(0).drugname);
-               // TextField tfdate = (TextField) scene.lookup();
-               // tfdate.setText(p.vaccines.get(0).date);
+
                 ComboBox cbfv = (ComboBox) scene.lookup("#Combo_Box_For_V");
                 cbfv.setItems(FXCollections.observableList(p.vaccines));
 
                 cbfv.getSelectionModel().selectedItemProperty().addListener((options1, oldValue1, newValue1) -> {
                     v =(Vaccine)newValue1;
+                if(v != null){
+                        TextField fttypev = (TextField) scene.lookup("#typev");
+                        fttypev.setText(v.type);
+                        TextField ftdatev = (TextField) scene.lookup("#datev");
+                        ftdatev.setText(v.date);
+                        TextField ftnamev = (TextField) scene.lookup("#namev1");
+                        ftnamev.setText(v.drugname);
+                }
 
-                    TextField fttypev = (TextField) scene.lookup("#typev");
-                    fttypev.setText(v.type);
-                    TextField ftdatev = (TextField) scene.lookup("#datev");
-                    ftdatev.setText(v.date);
-                    TextField ftnamev = (TextField) scene.lookup("#namev1");
-                    ftnamev.setText(v.drugname);
                 });
 
             }
@@ -105,7 +100,7 @@ public class HelloApplication extends Application {
                 tftypev.setText("");
                 TextField tfnamev = (TextField) scene.lookup("#namev1");
                 tfnamev.setText("");
-                TextField tfdate = (TextField) scene.lookup("#datav");
+                TextField tfdate = (TextField) scene.lookup("#datev");
                 tfdate.setText("");
             }
 
@@ -119,6 +114,11 @@ public class HelloApplication extends Application {
         return  (ComboBox) scene.lookup("#Combo_Box");
     }
 
+    public static ComboBox GetComboBox2()
+    {
+        return  (ComboBox) scene.lookup("#Combo_Box_For_V");
+    }
+
     public static void Save()
     {
         if(p != null) {
@@ -130,14 +130,68 @@ public class HelloApplication extends Application {
             p.age=Integer.parseInt(tfage.getText());
             TextField tfdofb = (TextField) scene.lookup("#DateofBirth");
             p.DateofBirth=tfdofb.getText();
-            TextField tfnamev = (TextField) scene.lookup("#namev1");
-            v.drugname=tfnamev.getText();
+
+            if(v!=null){
+                TextField tfnamev = (TextField) scene.lookup("#namev1");
+                v.drugname=tfnamev.getText();
+                TextField tftypev = (TextField) scene.lookup("#typev");
+                v.type=tftypev.getText();
+                TextField tfdate = (TextField) scene.lookup("#datev");
+                v.date=tfdate.getText();
+            }
+
+
+            //---------------------------------------------------------------
+
+            if(!p.vaccines.contains(v))
+            {
+                p.vaccines.add(v);
+            }
+
+
             TextField tftypev = (TextField) scene.lookup("#typev");
-            v.type=tftypev.getText();
+            String typev =tftypev.getText();
+            TextField tfnamev = (TextField) scene.lookup("#namev1");
+            String grugname = tfnamev.getText();
             TextField tfdate = (TextField) scene.lookup("#datev");
-            v.date=tfdate.getText();
+            String date = tfdate.getText();
+            Vaccine v1 = new Vaccine(date,typev,grugname);
+
+            vac.add(v1);
+            var cb =GetComboBox2();
+            //Vaccine.number=vac.size()+1;
+            cb.setItems(FXCollections.observableArrayList(vac));
+            p.vaccines = new ArrayList<>(vac);
         }
+
+
     }
+
+    static ArrayList<Vaccine> vac = null;
+    public static void AddV(){
+        vac = new ArrayList<Vaccine>(p.vaccines);
+        var cb =GetComboBox2();
+        cb.getItems().clear();
+
+        p.vaccines.clear();
+
+
+        if(p != null || p.vaccines != null ) {
+
+            TextField tftypev = (TextField) scene.lookup("#typev");
+            tftypev.setText("");
+            TextField tfnamev = (TextField) scene.lookup("#namev1");
+            tfnamev.setText("");
+            TextField tfdate = (TextField) scene.lookup("#datev");
+            tfdate.setText("");
+
+        }
+
+
+
+    }
+
+
 
 
 

@@ -10,6 +10,7 @@ public class Vaccine {
     int year = random.nextInt(2015,2021);
     public String date;
 
+
     public String getDate(){
         return date;
     }
@@ -44,17 +45,19 @@ public class Vaccine {
         this.date= day + "." + month + "." + year;
         this.type = Type[random.nextInt(Type.length)];
         this.drugname =Drugname[random.nextInt(Drugname.length)];
+
     }
 
     public Vaccine(String date, String type, String drugname){
         this.date=date;
         this.type=type;
         this.drugname=drugname;
+
     }
-    static  int number=1;
+
 
 
     public String toString() {
-        return number + ". " + drugname;
+          return  drugname;
     }
 }

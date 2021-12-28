@@ -93,6 +93,9 @@ public class HelloController {
     private Button Delete;
 
     @FXML
+    private Button addv;
+
+    @FXML
     private Button Save;
 
     @FXML
@@ -145,10 +148,14 @@ public class HelloController {
            HelloApplication.Save();
        });
 
+        addv.setOnAction(actionEvent -> {
 
+            HelloApplication.AddV();
+        });
 
 
     }
+
 
 
 

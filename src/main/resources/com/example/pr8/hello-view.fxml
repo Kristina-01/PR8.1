@@ -27,13 +27,14 @@
       <TextField fx:id="age" layoutX="359.0" layoutY="116.0" />
       <TextField fx:id="DateofBirth" layoutX="359.0" layoutY="148.0" />
       <ComboBox fx:id="Combo_Box_For_V" layoutX="202.0" layoutY="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" promptText="Название вакцины" style="-fx-background-color: FFEBCD;" />
-      <Button fx:id="Delete" layoutX="329.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: FFEBCD;" text="Удалить" />
-      <Button fx:id="Save" layoutX="400.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: FFEBCD;" text="Сохранить изменения" />
+      <Button fx:id="Delete" layoutX="210.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: FFEBCD;" text="Удалить" />
+      <Button fx:id="Save" layoutX="300.0" layoutY="349.0" mnemonicParsing="false" style="-fx-background-color: FFEBCD;" text="Сохранить изменения" />
       <Text layoutX="211.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название вакцины:" />
       <Text layoutX="211.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Тип вакцины:" />
       <Text layoutX="209.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата вакцинации:" />
       <TextField fx:id="namev1" layoutX="359.0" layoutY="230.0" />
       <TextField fx:id="typev" layoutX="359.0" layoutY="262.0" />
       <TextField fx:id="datev" layoutX="359.0" layoutY="300.0" />
+      <Button fx:id="addv" layoutX="470.0" layoutY="349.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: FFEBCD;" text="Добавить вакцину" />
    </children>
 </AnchorPane>
